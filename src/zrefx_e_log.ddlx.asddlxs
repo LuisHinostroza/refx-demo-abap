@@ -1,0 +1,139 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Expediente',
+    typeNamePlural: 'Expedientes',
+    title: { value: 'Expediente' },
+    description: { value: 'Inmueble' }
+  },
+  presentationVariant: [{
+    sortOrder: [{ by: 'ActualizadoEn', direction: #DESC }],
+    visualizations: [{ type: #AS_LINEITEM }]
+  }]
+}
+annotate view ZREFX_I_LOG with
+{
+  @UI.facet: [
+    { id: 'Cabecera', purpose: #STANDARD, type: #IDENTIFICATION_REFERENCE,
+      label: 'Datos del expediente', position: 10 },
+    { id: 'IA', purpose: #STANDARD, type: #FIELDGROUP_REFERENCE,
+      label: 'Dictamen de la IA', position: 20, targetQualifier: 'GrupoIA' },
+    { id: 'Imputacion', purpose: #STANDARD, type: #FIELDGROUP_REFERENCE,
+      label: 'Imputacion', position: 30, targetQualifier: 'GrupoPep' },
+    { id: 'Flujo', purpose: #STANDARD, type: #FIELDGROUP_REFERENCE,
+      label: 'Trazabilidad', position: 40, targetQualifier: 'GrupoFlujo' }
+  ]
+
+  @UI.lineItem: [{ position: 10, label: 'Expediente' }]
+  @UI.identification: [{ position: 10, label: 'Expediente' }]
+  Expediente;
+
+  @UI.lineItem: [{ position: 20, label: 'Origen' }]
+  @UI.identification: [{ position: 20, label: 'Sistema origen' }]
+  @UI.selectionField: [{ position: 20 }]
+  SistemaOrigen;
+
+  @UI.lineItem: [{ position: 30, label: 'Inmueble' }]
+  @UI.identification: [{ position: 30, label: 'Inmueble' }]
+  Inmueble;
+
+  @UI.identification: [{ position: 40, label: 'Unidad' }]
+  Unidad;
+
+  @UI.lineItem: [{ position: 40, label: 'Arrendatario' }]
+  @UI.identification: [{ position: 50, label: 'Arrendatario' }]
+  Arrendatario;
+
+  @UI.identification: [{ position: 60, label: 'Arrendador' }]
+  Arrendador;
+
+  @UI.lineItem: [{ position: 50, label: 'Renta origen' }]
+  @UI.identification: [{ position: 70, label: 'Renta segun origen' }]
+  RentaOrigen;
+
+  @UI.lineItem: [{ position: 60, label: 'Renta contrato' }]
+  @UI.identification: [{ position: 80, label: 'Renta segun contrato' }]
+  RentaContrato;
+
+  @UI.hidden: true
+  Moneda;
+
+  @UI.identification: [{ position: 90, label: 'Inicio segun origen' }]
+  FechaIniOrigen;
+
+  @UI.identification: [{ position: 100, label: 'Inicio segun contrato' }]
+  FechaIniContrato;
+
+  @UI.lineItem: [{ position: 70, label: 'Estado', criticality: 'Criticality' }]
+  @UI.identification: [{ position: 110, label: 'Estado', criticality: 'Criticality' }]
+  @UI.selectionField: [{ position: 10 }]
+  EstadoTxt;
+
+  @UI.hidden: true
+  Estado;
+
+  @UI.lineItem: [{ position: 80, label: 'Discrepancias', criticality: 'Criticality' }]
+  NumDiscrepancias;
+
+  @UI.lineItem: [{ position: 85, label: 'PEP' }]
+  @UI.fieldGroup: [{ qualifier: 'GrupoPep', position: 10, label: 'Elemento PEP' }]
+  Pep;
+
+  @UI.fieldGroup: [{ qualifier: 'GrupoPep', position: 20, label: 'Descripcion del PEP' }]
+  PepDesc;
+
+  @UI.fieldGroup: [{ qualifier: 'GrupoPep', position: 30, label: 'Sociedad' }]
+  @UI.selectionField: [{ position: 30 }]
+  Sociedad;
+
+  @UI.fieldGroup: [{ qualifier: 'GrupoPep', position: 40, label: 'Observacion de derivacion' }]
+  MotivoPep;
+
+  @UI.lineItem: [{ position: 90, label: 'Nº contrato' }]
+  @UI.identification: [{ position: 120, label: 'Numero de contrato' }]
+  NumContrato;
+
+  @UI.fieldGroup: [{ qualifier: 'GrupoIA', position: 10, label: 'Dictamen' }]
+  @UI.multiLineText: true
+  DictamenIA;
+
+  @UI.fieldGroup: [{ qualifier: 'GrupoIA', position: 20, label: 'Campos con discrepancia' }]
+  @UI.multiLineText: true
+  DetalleDiscrepancias;
+
+  @UI.fieldGroup: [{ qualifier: 'GrupoFlujo', position: 10, label: 'Validador' }]
+  Validador;
+
+  @UI.fieldGroup: [{ qualifier: 'GrupoFlujo', position: 20, label: 'Aprobador' }]
+  Aprobador;
+
+  @UI.fieldGroup: [{ qualifier: 'GrupoFlujo', position: 30, label: 'Motivo de rechazo' }]
+  MotivoRechazo;
+
+  @UI.fieldGroup: [{ qualifier: 'GrupoFlujo', position: 40, label: 'Recibido' }]
+  RecibidoEn;
+
+  @UI.fieldGroup: [{ qualifier: 'GrupoFlujo', position: 50, label: 'Ultima actualizacion' }]
+  ActualizadoEn;
+
+  @UI.hidden: true
+  MensajeId;
+  @UI.hidden: true
+  IdDocumento;
+  @UI.hidden: true
+  Criticality;
+  @UI.hidden: true
+  EsCreado;
+  @UI.hidden: true
+  EsRechazado;
+  @UI.hidden: true
+  EsPendiente;
+  @UI.hidden: true
+  EsError;
+  @UI.hidden: true
+  EsSinPep;
+  @UI.hidden: true
+  PepDerivado;
+  @UI.hidden: true
+  Contador;
+}

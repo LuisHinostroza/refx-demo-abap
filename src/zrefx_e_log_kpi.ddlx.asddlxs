@@ -1,0 +1,39 @@
+@Metadata.layer: #CORE
+@UI: {
+  headerInfo: {
+    typeName: 'Estado',
+    typeNamePlural: 'Estados',
+    title: { value: 'EstadoTxt' }
+  },
+  chart: [{
+    qualifier: 'ChartEstados',
+    chartType: #COLUMN,
+    dimensions: ['EstadoTxt'],
+    measures: ['NumExpedientes'],
+    dimensionAttributes: [{ dimension: 'EstadoTxt', role: #CATEGORY }],
+    measureAttributes: [{ measure: 'NumExpedientes', role: #AXIS_1, asDataPoint: true }]
+  }],
+  presentationVariant: [{
+    sortOrder: [{ by: 'Estado', direction: #ASC }],
+    visualizations: [{ type: #AS_CHART, qualifier: 'ChartEstados' }]
+  }]
+}
+annotate view zrefx_i_log_kpi with
+{
+  @UI.hidden: true
+  estado;
+
+  @UI.lineItem: [{ position: 10, label: 'Estado' }]
+  @UI.identification: [{ position: 10, label: 'Estado' }]
+  estadotxt;
+
+  @UI.lineItem: [{ position: 20, label: 'Expedientes', criticality: 'Criticality' }]
+  @UI.dataPoint: { title: 'Expedientes', criticality: 'Criticality' }
+  numexpedientes;
+
+  @UI.lineItem: [{ position: 30, label: 'Discrepancias' }]
+  totaldiscrepancias;
+
+  @UI.hidden: true
+  criticality;
+}

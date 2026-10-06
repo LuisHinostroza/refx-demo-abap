@@ -1,0 +1,6 @@
+@EndUserText.label: 'RE-FX Demo - Servicio de monitor'
+define service ZREFX_UI_LOG {
+  expose ZREFX_I_LOG     as Expediente;
+  expose ZREFX_I_LOG_KPI as EstadoKpi;
+  expose ZREFX_I_PEP_KPI as ImputacionKpi;
+}
