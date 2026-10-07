@@ -3,9 +3,9 @@
  <asx:abap xmlns:asx="http://www.sap.com/abapxml" version="1.0">
   <asx:values>
    <VSEOCLASS>
-    <CLSNAME>ZCL_REFX_REFRESH_LOG</CLSNAME>
+    <CLSNAME>ZCL_REFX_RESET_LOG</CLSNAME>
     <LANGU>E</LANGU>
-    <DESCRIPT>zcl_refx_refresh_log</DESCRIPT>
+    <DESCRIPT>zcl_refx_reset_log</DESCRIPT>
     <STATE>1</STATE>
     <CLSCCINCL>X</CLSCCINCL>
     <FIXPT>X</FIXPT>
